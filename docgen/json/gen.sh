@@ -6,7 +6,7 @@ SCHEMA_PATH="$(realpath "$THIS_PATH/../../schema")"
 DOCS_PATH="$THIS_PATH/docs"
 TEMPLATES_PATH="$THIS_PATH/templates"
 VALID_CYCLONEDX_VERSIONS=(1.2 1.3 1.4 1.5 1.6)
-DRAFT_CYCLONEDX_VERSIONS=()
+DRAFT_CYCLONEDX_VERSIONS=(patentbom)
 
 
 # Check to see if generate-schema-doc is executable and is in the path. If not, install JSON Schema for Humans.
