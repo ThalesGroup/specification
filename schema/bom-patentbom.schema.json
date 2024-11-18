@@ -5682,10 +5682,7 @@
       "title": "Patent Properties",
       "description": "Patents have properties that uniquely define them, such as: Patent Numbers and Titles, Patent Holders, Filing and Expiry Dates, Coverage Scope, Legal Status, Geographic Coverage.",
       "additionalProperties": false,
-      "required": [
-        "patentNumber",
-        "patentOffice"
-      ],
+      "required": [],
       "properties": {
         "bom-ref": {
           "$ref": "#/definitions/refType",
