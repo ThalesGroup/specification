@@ -5697,8 +5697,16 @@
             "Communication System with Interchangeable Overlays"
           ]
         },
-        "patentNumber": {
-          "title": "Patent Number",
+        "patentApplicationNumber": {
+          "title": "Patent Application Number",
+          "$ref": "#/definitions/patentNumber"
+        },
+        "patentPriorityNumber": {
+          "title": "Patent Priority Number",
+          "$ref": "#/definitions/patentNumber"
+        },
+        "patentPublicationNumber": {
+          "title": "Patent Publication Number",
           "$ref": "#/definitions/patentNumber"
         },
         "patentOffice": {
