@@ -5739,11 +5739,6 @@
         },
         "patentGeographicCoverage": {
           "$ref": "#/definitions/patentGeographicCoverage"
-        },
-        "patentExternalReferences": {
-          "type": "array",
-          "items": {"$ref": "#/definitions/externalReference"},
-          "title": "Patent External References"
         }
       }
     },
