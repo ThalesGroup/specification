@@ -5699,14 +5699,17 @@
         },
         "patentApplicationNumber": {
           "title": "Patent Application Number",
+          "description": "This is the unique number assigned to a patent application when it is filed with a patent office. It is used to identify the specific application and track its progress through the examination process. Purpose: Identifies a specific application during the patent filing and examination stages. Format: Varies by jurisdiction. Usually contains the year of filing and a serial number. Examples: US: US20240000123 (indicates the 123rd application filed in 2024 in the US) ; Europe: EP23123456 (23 = filing year 2023, serial number 123456).",
           "$ref": "#/definitions/patentNumber"
         },
         "patentPriorityNumber": {
           "title": "Patent Priority Number",
+          "description": "This number corresponds to the first application filed for an invention and establishes the earliest filing date (priority date) for subsequent applications claiming the same invention. It is especially important in international filings under the Paris Convention. Purpose: Establishes a priority date for determining the novelty and patentability of the invention. Format: Typically the same as the application number of the first filed patent. Example: If a US patent application US20240000123 was filed first, it becomes the priority number for related international filings.",
           "$ref": "#/definitions/patentNumber"
         },
         "patentPublicationNumber": {
           "title": "Patent Publication Number",
+          "description": "This is the number assigned to a patent application once it is published. Patent applications are generally published 18 months after filing (unless an applicant requests non-publication). This number is distinct from the application number. Purpose: Identifies the publicly available version of the application. Format: Varies by jurisdiction, often similar to application numbers but includes an additional suffix indicating publication. Example: US: US20240000123A1 (indicates the first publication of application US20240000123) ; Europe: EP23123456A1 (first publication of European application EP23123456).",
           "$ref": "#/definitions/patentNumber"
         },
         "patentOffice": {
@@ -5721,17 +5724,35 @@
           "type": "array",
           "$ref": "#/definitions/patentHolder"
         },
-        "patentFilingDate": {
+        "patentPriorityDate": {
           "type": "string",
           "format": "date-time",
-          "title": "Patent Filing Date",
-          "description": "The date and time (timestamp) when the patent has been filled."
+          "title": "Patent Priority Date",
+          "description": "The priority date is the earliest date on which the invention was first filed as a patent application. It serves as a reference point for determining the novelty and prior art for the invention.\n\nSignificance:\n - Establishes the cut-off date for assessing whether the invention is new (novel). \n - Determines which prior art is relevant to the patent examination process.\n\nWhen it occurs:\n - On the date of filing of the first patent application for the invention.\n - If multiple patents are filed based on the same invention, the priority date is usually that of the first filed application.\n\nExample: A US patent filed on January 1, 2024, is later used as a basis for a European patent filed on June 1, 2024. The priority date for both is January 1, 2024."
+        },
+        "patentApplicationDate": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Patent Application Date",
+          "description": "The application date is the date when a patent application is officially filed with a patent office.\n\nSignificance:\n - Marks the official start of the patent process for that jurisdiction.\n - Used to assign the patent application number.\n\nWhen it occurs:\n - Each filing in a jurisdiction gets its own application date (e.g., a US application might have one application date, while a European counterpart might have another).\n - The application date is often the same as the priority date for the first application, but subsequent filings in other countries will have later application dates.\n\nExample: A US patent application is filed on January 1, 2024. The application date is January 1, 2024. If a European counterpart is filed on June 1, 2024, its application date is June 1, 2024."
+        },
+        "patentPublicationDate": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Patent Publication Date",
+          "description": "The publication date is the date on which the patent application is made publicly available by the patent office. This is usually 18 months after the application date (or the earliest priority date, if applicable).\n\nSignificance:\n - The application and its details become publicly accessible.\n - Enables third parties to view and potentially challenge the application.\n\nWhen it occurs:\n - Typically 18 months after the earliest priority or application date.\n - Some jurisdictions allow early publication upon request.\n\nExample: A patent application filed on January 1, 2024, is published on July 1, 2025."
+        },
+        "patentGrantDate": {
+          "type": "string",
+          "format": "date-time",
+          "title": "Patent Grant Date",
+          "description": "The grant date is the date on which the patent office formally issues the patent, indicating that the invention has passed examination and is deemed patentable.\n\nSignificance: - Marks the point at which the inventor has enforceable patent rights.\n - The patent owner can now prevent others from using, selling, or distributing the invention without permission.\n\nWhen it occurs:\n - After successful examination of the application, which may take several years. \n\nExample: A patent application filed on January 1, 2024, is granted on December 1, 2026. The patent is enforceable from this date."
         },
         "patentExpirationDate": {
           "type": "string",
           "format": "date-time",
           "title": "Patent Expiration Date",
-          "description": "The date and time (timestamp) when the patent expires."
+          "description": "The date and time (timestamp) when the patent is expected to expire."
         },
         "patentLegalStatus": {
           "type": "array",
@@ -5911,7 +5932,7 @@
     "patentDocumentSuffix": {
       "type": "string",
       "title": "Patent Document Suffix",
-      "description": "Different patent jurisdictions append suffixes like `A1`, `A2`, `B1`, `B2`, `C1` to indicate different document types.",
+      "description": "Different patent jurisdictions append suffixes like `A1`, `A2`, `B1`, `B2`, `C1` to indicate different document types.  A1: First publication of a patent application ;  A2: Second publication or re-publication ;  B1: Granted patent (first publication) ;  B2: Granted patent (second publication or corrected version) ;  C1: Corrections or amendments.",
       "enum": [
         "A1",
         "A2",
