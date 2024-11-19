@@ -5697,6 +5697,14 @@
             "Communication System with Interchangeable Overlays"
           ]
         },
+        "patentAbstract": {
+          "type":"string",
+          "title": "Patent Abstract",
+          "description": "A rather short summary or abstract of the patent.",
+          "examples": [
+            "An abstract..."
+          ]
+        },
         "patentApplicationNumber": {
           "title": "Patent Application Number",
           "description": "This is the unique number assigned to a patent application when it is filed with a patent office. It is used to identify the specific application and track its progress through the examination process. Purpose: Identifies a specific application during the patent filing and examination stages. Format: Varies by jurisdiction. Usually contains the year of filing and a serial number. Examples: US: US20240000123 (indicates the 123rd application filed in 2024 in the US) ; Europe: EP23123456 (23 = filing year 2023, serial number 123456).",
