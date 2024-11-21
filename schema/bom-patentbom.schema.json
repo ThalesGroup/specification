@@ -5729,13 +5729,13 @@
             "patentPublicationDate": { "$ref": "#/definitions/patentPublicationDate" }
           }
         },
-        "patentOffice": {
-          "title": "Patent Office",
-          "$ref": "#/definitions/patentOffice"
-        },
         "patentDocumentSuffixKindCode": {
           "title": "Patent Document Suffix aka Kind Codes",
           "$ref": "#/definitions/patentDocumentSuffixKindCode"
+        },
+        "patentOffice": {
+          "title": "Patent Office",
+          "$ref": "#/definitions/patentOffice"
         },
         "patentInventors": {
           "type": "array",
