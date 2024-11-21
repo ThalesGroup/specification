@@ -5741,6 +5741,10 @@
           "type": "array",
           "$ref": "#/definitions/patentInventor"
         },
+        "patentAssignees": {
+          "type": "array",
+          "$ref": "#/definitions/patentAssignee"
+        },
         "patentExpirationDate": {
           "type": "string",
           "format": "date-time",
@@ -5942,6 +5946,13 @@
         { "$ref": "#/definitions/organizationalEntity" }
       ]
     },
+    "patentAssignee": {
+      "title": "Organization(s) and individual(s) that have an ownership interest in the legal rights a patent offers.",
+      "oneOf": [
+        { "$ref": "#/definitions/organizationalContact" },
+        { "$ref": "#/definitions/organizationalEntity" }
+      ]
+    },
     "patentLegalStatus": {
       "type": "object",
       "properties": {
@@ -5949,7 +5960,7 @@
           "type": "string",
           "title": "Patent Status",
           "description": "Patent Status: Pending, Granted, Revoked, Expired, Lapsed.",
-          "examples": [
+          "enum": [
             "Pending",
             "Granted",
             "Revoked",
