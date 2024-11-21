@@ -5749,10 +5749,8 @@
         },
         "patentLegalStatus": {
           "type": "array",
+          "description": "Patent Status to date. (Pending, Granted, Revoked, Expired, Lapsed)",
           "$ref": "#/definitions/patentLegalStatus"
-        },
-        "patentGeographicCoverage": {
-          "$ref": "#/definitions/patentGeographicCoverage"
         }
       }
     },
@@ -5944,17 +5942,13 @@
         { "$ref": "#/definitions/organizationalEntity" }
       ]
     },
-    "patentCoverageScope": {
-      "title": "Patent Coverage Scope",
-      "description": "A brief description of what each patent covers, e.g. specific features, processes, or designs."
-    },
     "patentLegalStatus": {
       "type": "object",
       "properties": {
         "status": {
           "type": "string",
           "title": "Patent Status",
-          "description": "Patent Status to date. (Pending, Granted, Revoked, Expired, Lapsed)",
+          "description": "Patent Status: Pending, Granted, Revoked, Expired, Lapsed.",
           "examples": [
             "Pending",
             "Granted",
@@ -5970,12 +5964,6 @@
           "description": "The timestamp corresponding to the Patent Status."
         }
       }
-    },
-    "patentGeographicCoverage": {
-      "type":"array",
-      "title": "Patent Geographic Coverage",
-      "description": "List of the countries or regions where the patent is valid.",
-      "items": { "type": "string" }
     },
     "patentPriorityDate": {
       "type": "string",
