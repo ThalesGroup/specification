@@ -5705,26 +5705,29 @@
             "An abstract..."
           ]
         },
-        "patentApplicationNumber": {
-          "title": "Patent Application Number",
-          "description": "This is the unique number assigned to a patent application when it is filed with a patent office. It is used to identify the specific application and track its progress through the examination process. \n\nPurpose: Identifies a specific application during the patent filing and examination stages. \n\nFormat: Varies by jurisdiction. Usually contains the year of filing and a serial number. \n\nExamples: \n - US: US20240000123 (indicates the 123rd application filed in 2024 in the US); \n - Europe: EP23123456 (23 = filing year 2023, serial number 123456). \n\n[WIPO ST.96 v8.0: Application Number: Numbers used by IPOs in order to identify each application received. https://www.wipo.int/standards/XMLSchema/ST96/V8_0/Common/ApplicationNumber.xsd]",
-          "$ref": "#/definitions/patentNumber"
+        "patentPriority": {
+          "description": "Number and date related to Patent Priority",
+          "type": "object",
+          "properties": {
+            "patentPriorityNumber": { "$ref": "#/definitions/patentPriorityNumber" },
+            "patentPriorityDate": { "$ref": "#/definitions/patentPriorityDate" }
+          }
         },
-        "patentPriorityNumber": {
-          "title": "Patent Priority Number",
-          "description": "This number corresponds to the first application filed for an invention and establishes the earliest filing date (priority date) for subsequent applications claiming the same invention. It is especially important in international filings under the Paris Convention. \n\nPurpose: Establishes a priority date for determining the novelty and patentability of the invention. \n\nFormat: Typically the same as the application number of the first filed patent. \n\nExample: If a US patent application US20240000123 was filed first, it becomes the priority number for related international filings.",
-          "$ref": "#/definitions/patentNumber"
+        "patentApplication": {
+          "description": "Number and date related to Patent Application",
+          "type": "object",
+          "properties": {
+            "patentApplicatisonNumber": { "$ref": "#/definitions/patentApplicationNumber" },
+            "patentApplicationDate": { "$ref": "#/definitions/patentApplicationDate" }
+          }
         },
-        "patentPublicationNumber": {
-          "title": "Patent Publication Number",
-          "description": "This is the number assigned to a patent application once it is published. Patent applications are generally published 18 months after filing (unless an applicant requests non-publication). This number is distinct from the application number. \n\nPurpose: Identifies the publicly available version of the application. \n\nFormat: Varies by jurisdiction, often similar to application numbers but includes an additional suffix indicating publication. \n\nExample:\n - US: US20240000123A1 (indicates the first publication of application US20240000123) \n - Europe: EP23123456A1 (first publication of European application EP23123456). \n\n [WIPO ST.96 v8.0: Publication Number: https://www.wipo.int/standards/XMLSchema/ST96/V8_0/Patent/PublicationNumber.xsd]",
-          "$ref": "#/definitions/patentNumber"
-        },
-        "patentPriorityDate":{
-          "type": "string",
-          "format": "date-time",
-          "title": "Patent Priority Date",
-          "$ref": "#/definitions/patentPriorityDate"
+        "patentPublication": {
+          "description": "Number and date related to Patent Publication",
+          "type": "object",
+          "properties": {
+            "patentPublicationNumber": { "$ref": "#/definitions/patentPublicationNumber" },
+            "patentPublicationDate": { "$ref": "#/definitions/patentPublicationDate" }
+          }
         },
         "patentOffice": {
           "title": "Patent Office",
@@ -5756,7 +5759,7 @@
     "patentNumber": {
       "type": "string",
       "title": "Patent number",
-      "description": "There are numerous patent numbering formats worldwide, each tailored to the specific requirements of different countries and regional patent offices. The number of different formats primarily corresponds to the number of jurisdictions with their own patent systems. However, the formats generally fall into a few broad categories based on common elements like country codes, serial numbers, year indicators, and document type codes.",
+      "description": "There are numerous patent numbering formats worldwide, each tailored to the specific requirements of different countries and regional patent offices (IPOs). The number of different formats primarily corresponds to the number of jurisdictions with their own patent systems.\n\n However, the formats generally fall into a few broad categories based on common elements like country codes, serial numbers, year indicators, and document type suffixes codes.",
       "examples": [
         "US1234567B1",
         "US 20210123456",
@@ -5776,12 +5779,12 @@
     },
     "patentOffice": {
       "type": "array",
-      "description": "A Patent Office.",
+      "description": "Information related to the Intellectual Property Patent Office.",
       "items": {
         "type": "object",
         "properties": {
           "patentOfficeCountryPrefix": {
-            "type": "string"
+            "$ref": "#/definitions/patentOfficeCountryPrefix"
           },
           "patentOfficeShortname": {
             "type": "string"
@@ -5922,7 +5925,7 @@
     "patentDocumentSuffix": {
       "type": "string",
       "title": "Patent Document Suffix",
-      "description": "Different patent jurisdictions append suffixes like `A1`, `A2`, `B1`, `B2`, `C1` to indicate different document types. \n\n - A1: First publication of a patent application; \n - A2: Second publication or re-publication;\n - B1: Granted patent (first publication);\n - B2: Granted patent (second publication or corrected version); \n - C1: Corrections or amendments.",
+      "description": "Different patent jurisdictions append suffixes like `A1`, `A2`, `B1`, `B2`, `C1` to indicate different document types. \n\n - A1: First publication of a patent application; \n - A2: Second publication or re-publication;\n - B1: Granted patent (first publication);\n - B2: Granted patent (second publication or corrected version); \n - C1: Corrections or amendments. \n\nPatent document suffixes might be already included in the patent number.",
       "enum": [
         "A1",
         "A2",
@@ -6005,6 +6008,28 @@
       "title": "Patent Grant Date",
       "description": "The grant date is the date on which the patent office formally issues the patent, indicating that the invention has passed examination and is deemed patentable.\n\nSignificance: - Marks the point at which the inventor has enforceable patent rights.\n - The patent owner can now prevent others from using, selling, or distributing the invention without permission.\n\nWhen it occurs:\n - After successful examination of the application, which may take several years. \n\nExample: A patent application filed on January 1, 2024, is granted on December 1, 2026. The patent is enforceable from this date.",
       "examples": ["2024-01-01"]
+    },
+    "patentApplicationNumber": {
+      "title": "Patent Application Number",
+      "description": "This is the unique number assigned to a patent application when it is filed with a patent office. It is used to identify the specific application and track its progress through the examination process. \n\nPurpose: Identifies a specific application during the patent filing and examination stages. \n\nFormat: Varies by jurisdiction. Usually contains the year of filing and a serial number. \n\nExamples: \n - US: US20240000123 (indicates the 123rd application filed in 2024 in the US); \n - Europe: EP23123456 (23 = filing year 2023, serial number 123456). \n\n[WIPO ST.96 v8.0: Application Number: Numbers used by IPOs in order to identify each application received. https://www.wipo.int/standards/XMLSchema/ST96/V8_0/Common/ApplicationNumber.xsd]",
+      "$ref": "#/definitions/patentNumber"
+    },
+    "patentPriorityNumber": {
+      "title": "Patent Priority Number",
+      "description": "This number corresponds to the first application filed for an invention and establishes the earliest filing date (priority date) for subsequent applications claiming the same invention. It is especially important in international filings under the Paris Convention. \n\nPurpose: Establishes a priority date for determining the novelty and patentability of the invention. \n\nFormat: Typically the same as the application number of the first filed patent. \n\nExample: If a US patent application US20240000123 was filed first, it becomes the priority number for related international filings.",
+      "$ref": "#/definitions/patentNumber"
+    },
+    "patentPublicationNumber": {
+      "title": "Patent Publication Number",
+      "description": "This is the number assigned to a patent application once it is published. Patent applications are generally published 18 months after filing (unless an applicant requests non-publication). This number is distinct from the application number. \n\nPurpose: Identifies the publicly available version of the application. \n\nFormat: Varies by jurisdiction, often similar to application numbers but includes an additional suffix indicating publication. \n\nExample:\n - US: US20240000123A1 (indicates the first publication of application US20240000123) \n - Europe: EP23123456A1 (first publication of European application EP23123456). \n\n [WIPO ST.96 v8.0: Publication Number: https://www.wipo.int/standards/XMLSchema/ST96/V8_0/Patent/PublicationNumber.xsd]",
+      "$ref": "#/definitions/patentNumber"
+    },
+    "patentOfficeCountryPrefix": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "minLength": 2,
+      "maxLength": 2,
+      "description": "Two-letter alphabetic codes which represent the names of states, other entities and intergovernmental organizations the legislation of which provides for the protection of IP rights or which organizations are acting in the framework of a treaty in the field of IP. \n\n[WIPO ST.96 v8.0: IPOfficeCode: https://www.wipo.int/standards/XMLSchema/ST96/V8_0/Common/IPOfficeCode.xsd]"
     }
   }
 }
